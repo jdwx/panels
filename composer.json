@@ -1,0 +1,20 @@
+{
+  "name": "jdwx/panels",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "JDWX\\Panels\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "jetbrains/phpstorm-attributes": "^1.0",
+    "phpunit/phpunit": "^10"
+  },
+  "require": {
+    "php": ">=8.3.0",
+    "jdwx/html5": "dev-main",
+    "jdwx/web": "dev-main"
+  }
+}
