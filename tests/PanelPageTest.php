@@ -75,7 +75,7 @@ final class PanelPageTest extends TestCase {
         $page = new PanelPage();
         $st = "<!DOCTYPE html>\n"
             . "<html lang=\"en\">\n"
-            . "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+            . "<head><meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\">"
             . "<meta charset=\"UTF-8\"></head><body></body></html>";
         self::assertSame( $st, $page->render() );
     }
