@@ -31,8 +31,9 @@ class PanelPage extends AbstractHtmlPage {
 
 
     /** @param list<PanelInterface>|PanelInterface|null $i_nrPanels */
-    public function __construct( array|PanelInterface|null $i_nrPanels = null, ?string $i_nstLanguage = null ) {
-        parent::__construct();
+    public function __construct( array|PanelInterface|null $i_nrPanels = null, ?string $i_nstLanguage = null,
+                                 ?string                   $i_nstCharset = null, ?string $i_nstContentType = null ) {
+        parent::__construct( $i_nstContentType, $i_nstCharset );
         $this->setLanguage( $i_nstLanguage );
         if ( $i_nrPanels instanceof PanelInterface ) {
             $i_nrPanels = [ $i_nrPanels ];
