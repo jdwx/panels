@@ -7,7 +7,7 @@ declare( strict_types = 1 );
 namespace JDWX\Panels;
 
 
-use JDWX\Web\Stream\YieldHelper;
+use JDWX\Stream\StreamHelper;
 use Stringable;
 
 
@@ -37,7 +37,7 @@ trait PanelContainerTrait {
     /** @return iterable<iterable<string|Stringable>|string|Stringable> */
     protected function _body() : iterable {
         foreach ( $this->rPanels as $panel ) {
-            yield from YieldHelper::yield( $panel->body() );
+            yield from StreamHelper::yield( $panel->body() );
         }
     }
 
@@ -45,7 +45,7 @@ trait PanelContainerTrait {
     /** @return iterable<iterable<string|Stringable>|string|Stringable> */
     protected function _bodyEarly() : iterable {
         foreach ( $this->rPanels as $panel ) {
-            yield from YieldHelper::yield( $panel->bodyEarly() );
+            yield from StreamHelper::yield( $panel->bodyEarly() );
         }
     }
 
@@ -53,7 +53,7 @@ trait PanelContainerTrait {
     /** @return iterable<iterable<string|Stringable>|string|Stringable> */
     protected function _bodyLate() : iterable {
         foreach ( $this->rPanels as $panel ) {
-            yield from YieldHelper::yield( $panel->bodyLate() );
+            yield from StreamHelper::yield( $panel->bodyLate() );
         }
     }
 
@@ -76,7 +76,7 @@ trait PanelContainerTrait {
     /** @return iterable<string|Stringable> */
     protected function _head() : iterable {
         foreach ( $this->rPanels as $panel ) {
-            yield from YieldHelper::yield( $panel->head() );
+            yield from StreamHelper::yield( $panel->head() );
         }
     }
 
