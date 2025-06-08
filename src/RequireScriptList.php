@@ -10,6 +10,8 @@ namespace JDWX\Panels;
 /**
  * Using this trait (from another trait) requires that any consumer
  * of that trait will have to provide ScriptListInterface.
+ *
+ * @phpstan-ignore trait.unused
  */
 trait RequireScriptList {
 
