@@ -5,6 +5,8 @@ declare( strict_types = 1 );
 
 
 use JDWX\Panels\SimpleElementPanel;
+use JDWX\Strict\Cast;
+use JDWX\Strict\TypeIs;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -19,14 +21,14 @@ final class SimpleElementPanelTest extends TestCase {
         $panel->addBody( 'qux' );
         self::assertSame(
             [ '<foo>', 'bar', 'baz', 'qux', '</foo>' ],
-            iterator_to_array( $panel->body(), false )
+            Cast::listStringy( TypeIs::iterable( $panel->body() ) )
         );
     }
 
 
     public function testConstruct() : void {
         $panel = new SimpleElementPanel( 'foo', 'bar' );
-        self::assertSame( [ '<foo>', 'bar', '</foo>' ], iterator_to_array( $panel->body(), false ) );
+        self::assertSame( [ '<foo>', 'bar', '</foo>' ], Cast::listStringy( TypeIs::iterable( $panel->body() ) ) );
     }
 
 
