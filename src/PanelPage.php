@@ -7,6 +7,7 @@ declare( strict_types = 1 );
 namespace JDWX\Panels;
 
 
+use JDWX\Stream\StreamHelper;
 use JDWX\Web\Pages\AbstractHtmlPage;
 use JDWX\Web\Pages\HtmlHeadTrait;
 use JDWX\Web\Pages\HtmlPageTrait;
@@ -44,7 +45,7 @@ class PanelPage extends AbstractHtmlPage {
     }
 
 
-    /** @return iterable<string> */
+    /** @return iterable<string|Stringable> */
     public function getHeaders() : iterable {
         yield from parent::getHeaders();
         yield from $this->_headerList();
@@ -53,10 +54,10 @@ class PanelPage extends AbstractHtmlPage {
 
     /** @return iterable<string|Stringable> */
     protected function body() : iterable {
-        yield from $this->_bodyEarly();
-        yield from $this->_body();
-        yield from $this->_bodyLate();
-        yield from $this->scripts();
+        yield from StreamHelper::yieldDeep( $this->_bodyEarly() );
+        yield from StreamHelper::yieldDeep( $this->_body() );
+        yield from StreamHelper::yieldDeep( $this->_bodyLate() );
+        yield from StreamHelper::yieldDeep( $this->scripts() );
     }
 
 

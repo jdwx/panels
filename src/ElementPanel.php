@@ -20,8 +20,8 @@ abstract class ElementPanel extends AbstractBodyPanel {
     public function __construct( private string $stElement = 'div' ) {}
 
 
-    /** @return iterable<string|Stringable>|string|Stringable */
-    public function body() : iterable|string|Stringable {
+    /** @return iterable<string|Stringable> */
+    public function body() : iterable {
         $stAttributes = $this->attributeString();
         if ( $stAttributes !== '' ) {
             yield "<{$this->stElement}{$stAttributes}>";
@@ -29,10 +29,10 @@ abstract class ElementPanel extends AbstractBodyPanel {
             yield "<{$this->stElement}>";
         }
         $x = $this->innerBody();
-        if ( is_string( $x ) ) {
-            yield $x;
-        } else {
+        if ( is_iterable( $x ) ) {
             yield from $x;
+        } else {
+            yield $x;
         }
         yield "</{$this->stElement}>";
     }

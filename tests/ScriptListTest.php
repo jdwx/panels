@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 
 
 use JDWX\Panels\ScriptBody;
+use JDWX\Panels\ScriptListInterface;
 use JDWX\Panels\ScriptListTrait;
 use JDWX\Panels\ScriptUri;
 use PHPUnit\Framework\TestCase;
@@ -27,25 +28,29 @@ final class ScriptListTest extends TestCase {
     }
 
 
+    /** @suppress PhanUndeclaredMethod */
     public function testAddScriptBody() : void {
         $obj = $this->newObject();
         $obj->addScriptBody( 'let bar = null' );
+        assert( method_exists( $obj, 'text' ) );
         $st = $obj->text();
         self::assertSame( '<script>let bar = null</script>', $st );
     }
 
 
+    /** @suppress PhanUndeclaredMethod */
     public function testAddScriptUri() : void {
         $obj = $this->newObject();
         $obj->addScriptUri( 'foo' );
+        assert( method_exists( $obj, 'text' ) );
         $st = $obj->text();
         /** @noinspection HtmlUnknownTarget */
         self::assertSame( '<script src="foo"></script>', $st );
     }
 
 
-    private function newObject() : object {
-        return new class() {
+    private function newObject() : ScriptListInterface {
+        return new class() implements ScriptListInterface {
 
 
             use ScriptListTrait;

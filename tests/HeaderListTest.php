@@ -4,6 +4,7 @@
 declare( strict_types = 1 );
 
 
+use JDWX\Panels\HeaderListInterface;
 use JDWX\Panels\HeaderListTrait;
 use PHPUnit\Framework\TestCase;
 
@@ -23,8 +24,8 @@ class HeaderListTest extends TestCase {
     }
 
 
-    private function newObject() : object {
-        return new class() {
+    private function newObject() : HeaderListInterface {
+        return new class() implements HeaderListInterface {
 
 
             use HeaderListTrait;

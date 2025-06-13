@@ -6,6 +6,7 @@ declare( strict_types = 1 );
 
 use JDWX\Panels\CssInline;
 use JDWX\Panels\CssLink;
+use JDWX\Panels\CssListInterface;
 use JDWX\Panels\CssListTrait;
 use PHPUnit\Framework\TestCase;
 
@@ -27,25 +28,29 @@ final class CssListTest extends TestCase {
     }
 
 
+    /** @suppress PhanUndeclaredMethod */
     public function testAddCssInline() : void {
         $obj = $this->newObject();
         $obj->addCssInline( '.foo' );
+        assert( method_exists( $obj, 'text' ) );
         $st = $obj->text();
         self::assertSame( '<style>.foo</style>', $st );
     }
 
 
+    /** @suppress PhanUndeclaredMethod */
     public function testAddCssStylesheet() : void {
         $obj = $this->newObject();
         $obj->addCssUri( 'foo' );
+        assert( method_exists( $obj, 'text' ) );
         $st = $obj->text();
         /** @noinspection HtmlUnknownTarget */
         self::assertSame( '<link href="foo" rel="stylesheet">', $st );
     }
 
 
-    private function newObject() : object {
-        return new class() {
+    private function newObject() : CssListInterface {
+        return new class() implements CssListInterface {
 
 
             use CssListTrait;
