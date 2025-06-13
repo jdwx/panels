@@ -19,14 +19,14 @@ final class ElementPanelTest extends TestCase {
         $el = $this->newElementPanel( [ 'foo', 'bar', 'baz' ] );
         self::assertSame(
             [ '<div>', 'foo', 'bar', 'baz', '</div>' ],
-            Cast::listStringy( TypeIs::iterable( $el->body() ) )
+            Cast::listStringy( TypeIs::iterableStringy( $el->body() ) )
         );
     }
 
 
     public function testBodyForString() : void {
         $el = $this->newElementPanel( 'bar' );
-        self::assertSame( [ '<div>', 'bar', '</div>' ], Cast::listStringy( TypeIs::iterable( $el->body() ) ) );
+        self::assertSame( [ '<div>', 'bar', '</div>' ], Cast::listStringy( TypeIs::iterableStringy( $el->body() ) ) );
     }
 
 
@@ -36,7 +36,7 @@ final class ElementPanelTest extends TestCase {
         $el->setAttribute( 'contenteditable' );
         self::assertSame(
             [ '<div contenteditable id="bar">', 'baz', '</div>' ],
-            Cast::listStringy( TypeIs::iterable( $el->body() ) )
+            Cast::listStringy( TypeIs::iterableStringy( $el->body() ) )
         );
     }
 
@@ -44,7 +44,10 @@ final class ElementPanelTest extends TestCase {
     public function testSetElement() : void {
         $el = $this->newElementPanel( 'baz' );
         $el->setElement( 'span' );
-        self::assertSame( [ '<span>', 'baz', '</span>' ], Cast::listStringy( TypeIs::iterable( $el->body() ) ) );
+        self::assertSame(
+            [ '<span>', 'baz', '</span>' ],
+            Cast::listStringy( TypeIs::iterableStringy( $el->body() ) )
+        );
     }
 
 

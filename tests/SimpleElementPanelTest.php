@@ -21,14 +21,16 @@ final class SimpleElementPanelTest extends TestCase {
         $panel->addBody( 'qux' );
         self::assertSame(
             [ '<foo>', 'bar', 'baz', 'qux', '</foo>' ],
-            Cast::listStringy( TypeIs::iterable( $panel->body() ) )
+            Cast::listStringy( TypeIs::iterableStringy( $panel->body() ) )
         );
     }
 
 
     public function testConstruct() : void {
         $panel = new SimpleElementPanel( 'foo', 'bar' );
-        self::assertSame( [ '<foo>', 'bar', '</foo>' ], Cast::listStringy( TypeIs::iterable( $panel->body() ) ) );
+        self::assertSame(
+            [ '<foo>', 'bar', '</foo>' ],
+            Cast::listStringy( TypeIs::iterableStringy( $panel->body() ) ) );
     }
 
 

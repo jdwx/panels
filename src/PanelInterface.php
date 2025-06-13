@@ -17,15 +17,15 @@ use Stringable;
 interface PanelInterface {
 
 
-    /** @return iterable<string|Stringable>|string|Stringable */
+    /** @return iterable<int, string|Stringable>|string|Stringable */
     public function body() : iterable|string|Stringable;
 
 
-    /** @return iterable<string|Stringable>|string|Stringable */
+    /** @return iterable<int, string|Stringable>|string|Stringable */
     public function bodyEarly() : iterable|string|Stringable;
 
 
-    /** @return iterable<string|Stringable>|string|Stringable */
+    /** @return iterable<int, string|Stringable>|string|Stringable */
     public function bodyLate() : iterable|string|Stringable;
 
 
@@ -36,18 +36,18 @@ interface PanelInterface {
     public function first() : void;
 
 
-    /** @return iterable<string|Stringable>|string|Stringable */
+    /** @return iterable<int, string|Stringable>|string|Stringable */
     public function head() : iterable|string|Stringable;
 
 
-    /** @return iterable<string|Stringable> */
+    /** @return iterable<int, string|Stringable> */
     public function headerList() : iterable;
 
 
     public function last() : void;
 
 
-    /** @return iterable<ScriptInterface> */
+    /** @return iterable<int, ScriptInterface> */
     public function scriptList() : iterable;
 
 

@@ -34,26 +34,26 @@ trait PanelContainerTrait {
     }
 
 
-    /** @return iterable<iterable<string|Stringable>|string|Stringable> */
+    /** @return iterable<int, iterable<int, string|Stringable>|string|Stringable> */
     protected function _body() : iterable {
         foreach ( $this->rPanels as $panel ) {
-            yield from StreamHelper::yield( $panel->body() );
+            yield from StreamHelper::yieldList( $panel->body() );
         }
     }
 
 
-    /** @return iterable<iterable<string|Stringable>|string|Stringable> */
+    /** @return iterable<int, iterable<int, string|Stringable>|string|Stringable> */
     protected function _bodyEarly() : iterable {
         foreach ( $this->rPanels as $panel ) {
-            yield from StreamHelper::yield( $panel->bodyEarly() );
+            yield from StreamHelper::yieldList( $panel->bodyEarly() );
         }
     }
 
 
-    /** @return iterable<iterable<string|Stringable>|string|Stringable> */
+    /** @return iterable<int, iterable<int, string|Stringable>|string|Stringable> */
     protected function _bodyLate() : iterable {
         foreach ( $this->rPanels as $panel ) {
-            yield from StreamHelper::yield( $panel->bodyLate() );
+            yield from StreamHelper::yieldList( $panel->bodyLate() );
         }
     }
 

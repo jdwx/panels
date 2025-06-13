@@ -84,7 +84,7 @@ class PanelPage extends AbstractHtmlPage {
     }
 
 
-    /** @return iterable<string> */
+    /** @return iterable<int, string> */
     protected function scripts() : iterable {
         $rScripts = [];
         foreach ( $this->_scriptList() as $script ) {
