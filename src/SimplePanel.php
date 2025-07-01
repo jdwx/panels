@@ -19,7 +19,7 @@ class SimplePanel extends AbstractBodyPanel {
 
     /** @param list<string|Stringable>|string|Stringable $i_body */
     public function __construct( array|string|Stringable $i_body = [] ) {
-        if ( is_string( $i_body ) ) {
+        if ( ! is_array( $i_body ) ) {
             $i_body = [ $i_body ];
         }
         $this->rBody = $i_body;

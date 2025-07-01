@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 
 
 use JDWX\Panels\ElementPanel;
+use JDWX\Stream\StreamHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -24,7 +25,7 @@ final class ElementPanelTest extends TestCase {
 
 
         };
-        self::assertSame( [ '<div>', 'foo', '</div>' ], iterator_to_array( $el->body(), false ) );
+        self::assertSame( [ '<div>', 'foo', '</div>' ], StreamHelper::asList( $el->body() ) );
     }
 
 
@@ -38,7 +39,7 @@ final class ElementPanelTest extends TestCase {
 
 
         };
-        self::assertSame( [ '<div>', 'bar', '</div>' ], iterator_to_array( $el->body(), false ) );
+        self::assertSame( [ '<div>', 'bar', '</div>' ], StreamHelper::asList( $el->body() ) );
     }
 
 
@@ -56,7 +57,7 @@ final class ElementPanelTest extends TestCase {
         $el->setAttribute( 'contenteditable' );
         self::assertSame(
             [ '<div contenteditable id="bar">', 'baz', '</div>' ],
-            iterator_to_array( $el->body(), false )
+            StreamHelper::asList( $el->body() )
         );
     }
 
@@ -72,7 +73,7 @@ final class ElementPanelTest extends TestCase {
 
         };
         $el->setElement( 'span' );
-        self::assertSame( [ '<span>', 'baz', '</span>' ], iterator_to_array( $el->body(), false ) );
+        self::assertSame( [ '<span>', 'baz', '</span>' ], StreamHelper::asList( $el->body() ) );
     }
 
 
