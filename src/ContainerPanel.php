@@ -7,7 +7,7 @@ declare( strict_types = 1 );
 namespace JDWX\Panels;
 
 
-class ContainerPanel implements PanelInterface {
+class ContainerPanel implements PanelInterface, PanelContainerInterface {
 
 
     /**

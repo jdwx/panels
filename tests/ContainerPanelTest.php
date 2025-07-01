@@ -15,6 +15,35 @@ use Shims\MyBodyPanel;
 final class ContainerPanelTest extends TestCase {
 
 
+    public function testAppendPanelForDeeperLoop() : void {
+        $cont1 = new ContainerPanel();
+        $cont2 = new ContainerPanel();
+        $cont1->appendPanel( $cont2 );
+        $cont3 = new ContainerPanel();
+        $cont2->appendPanel( $cont3 );
+        self::expectException( InvalidArgumentException::class );
+        self::expectExceptionMessage( 'cannot contain itself' );
+        $cont3->appendPanel( $cont1 );
+    }
+
+
+    public function testAppendPanelForDontAppendYourself() : void {
+        $cont1 = new ContainerPanel();
+        self::expectException( InvalidArgumentException::class );
+        self::expectExceptionMessage( 'already exists' );
+        $cont1->appendPanel( $cont1 );
+    }
+
+
+    public function testAppendPanelForWeVeAlreadyGotOne() : void {
+        $panel1 = new MyBodyPanel();
+        $cont1 = new ContainerPanel( [ $panel1 ] );
+        self::expectException( InvalidArgumentException::class );
+        self::expectExceptionMessage( 'already exists' );
+        $cont1->appendPanel( $panel1 );
+    }
+
+
     public function testNested() : void {
         $panel1 = new MyBodyPanel();
         $panel1->stBody = 'Foo';

@@ -20,7 +20,7 @@ use Stringable;
  * elements, like headers, scripts, and CSS URIs, and then combines them into
  * a single page that renders everything in the right order.
  */
-class PanelPage extends AbstractHtmlPage {
+class PanelPage extends AbstractHtmlPage implements PanelContainerInterface {
 
 
     use HtmlHeadTrait {
