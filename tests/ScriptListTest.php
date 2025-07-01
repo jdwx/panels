@@ -7,9 +7,14 @@ declare( strict_types = 1 );
 use JDWX\Panels\ScriptBody;
 use JDWX\Panels\ScriptListTrait;
 use JDWX\Panels\ScriptUri;
+use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 
+#[CoversTrait( ScriptListTrait::class )]
+#[UsesClass( ScriptBody::class )]
+#[UsesClass( ScriptUri::class )]
 final class ScriptListTest extends TestCase {
 
 

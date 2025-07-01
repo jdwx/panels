@@ -4,6 +4,7 @@
 declare( strict_types = 1 );
 
 
+use JDWX\Panels\CssLink;
 use JDWX\Panels\PanelPage;
 use JDWX\Panels\ScriptBody;
 use JDWX\Panels\ScriptUri;
@@ -11,6 +12,7 @@ use JDWX\Panels\SimplePanel;
 use JDWX\Web\Backends\MockHttpBackend;
 use JDWX\Web\Http;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Shims\MyBodyPanel;
 
@@ -19,6 +21,10 @@ require_once __DIR__ . '/Shims/MyBodyPanel.php';
 
 
 #[CoversClass( PanelPage::class )]
+#[UsesClass( SimplePanel::class )]
+#[UsesClass( CssLink::class )]
+#[UsesClass( ScriptBody::class )]
+#[UsesClass( ScriptUri::class )]
 final class PanelPageTest extends TestCase {
 
 

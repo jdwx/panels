@@ -7,10 +7,12 @@ declare( strict_types = 1 );
 use JDWX\Panels\AbstractScript;
 use JDWX\Panels\ScriptUri;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 
 #[CoversClass( AbstractScript::class )]
+#[UsesClass( ScriptUri::class )]
 final class AbstractScriptTest extends TestCase {
 
 

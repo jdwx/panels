@@ -7,9 +7,14 @@ declare( strict_types = 1 );
 use JDWX\Panels\CssInline;
 use JDWX\Panels\CssLink;
 use JDWX\Panels\CssListTrait;
+use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 
+#[CoversTrait( CssListTrait::class )]
+#[UsesClass( CssInline::class )]
+#[UsesClass( CssLink::class )]
 final class CssListTest extends TestCase {
 
 
