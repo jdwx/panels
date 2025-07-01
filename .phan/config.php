@@ -6,7 +6,7 @@ declare( strict_types = 1 );
 return [
 
     'minimum_target_php_version' => '8.3',
-    'target_php_version' => '8.3',
+    'target_php_version' => '8.4',
 
     'directory_list' => [
         'src/',
@@ -16,6 +16,10 @@ return [
 
     'exclude_analysis_directory_list' => [
         'vendor/',
+    ],
+
+    'exclude_file_list' => [
+	    'vendor/symfony/polyfill-php80/Resources/stubs/Stringable.php'
     ],
 
 
