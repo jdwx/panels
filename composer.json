@@ -15,6 +15,6 @@
   "require": {
     "php": ">=8.3.0",
     "jdwx/html5": "^1.0",
-    "jdwx/web": "dev-main"
+    "jdwx/web": "^v2.1.13"
   }
 }
