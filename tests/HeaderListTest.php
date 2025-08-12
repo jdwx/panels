@@ -6,9 +6,11 @@ declare( strict_types = 1 );
 
 use JDWX\Panels\HeaderListInterface;
 use JDWX\Panels\HeaderListTrait;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\TestCase;
 
 
+#[CoversTrait( HeaderListTrait::class )]
 class HeaderListTest extends TestCase {
 
 

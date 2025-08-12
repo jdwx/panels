@@ -7,6 +7,7 @@ declare( strict_types = 1 );
 namespace JDWX\Panels;
 
 
+use InvalidArgumentException;
 use JDWX\Stream\StreamHelper;
 use Stringable;
 
@@ -18,8 +19,36 @@ trait PanelContainerTrait {
     private array $rPanels = [];
 
 
+    /**
+     * @suppress PhanPossiblyUndeclaredPropertyOfClass Phan gets confused by testing
+     * $this instanceof PanelInterface because PanelInterface doesn't have $rPanels
+     * defined.
+     */
     public function appendPanel( PanelInterface $i_panel ) : void {
+        if ( $this->containsPanel( $i_panel ) ) {
+            throw new InvalidArgumentException( 'Panel already exists in this container.' );
+        }
+        if ( $i_panel instanceof PanelContainerInterface && $this instanceof PanelInterface &&
+            $i_panel->containsPanel( $this ) ) {
+            throw new InvalidArgumentException( 'Panel cannot contain itself.' );
+        }
         $this->rPanels[] = $i_panel;
+    }
+
+
+    public function containsPanel( PanelInterface $i_panel ) : bool {
+        if ( $i_panel === $this ) {
+            return true;
+        }
+        foreach ( $this->rPanels as $panel ) {
+            if ( $panel === $i_panel ) {
+                return true;
+            }
+            if ( $panel instanceof PanelContainerInterface && $panel->containsPanel( $i_panel ) ) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

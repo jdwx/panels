@@ -9,10 +9,14 @@ use JDWX\Panels\CssLink;
 use JDWX\Panels\ScriptUri;
 use JDWX\Panels\SimplePanel;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 
 #[CoversClass( AbstractBodyPanel::class )]
+#[UsesClass( SimplePanel::class )]
+#[UsesClass( CssLink::class )]
+#[UsesClass( ScriptUri::class )]
 final class AbstractBodyPanelTest extends TestCase {
 
 
